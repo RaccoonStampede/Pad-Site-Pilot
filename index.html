@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PadPilot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with navigation (Image 8, 9, 10: JS/HTML/CSS tabs) -->
+        <header>
+            <h1>PadPilot</h1>
+            <nav>
+                <button>JS</button>
+                <button>HTML</button>
+                <button>CSS</button>
+                <button>Edit</button>
+                <button>Refresh</button>
+            </nav>
+        </header>
+
+        <!-- Main Content (Image 8: Job Flowchart Guide) -->
+        <main id="main-page">
+            <section class="job-flowchart">
+                <h2>Job Flowchart Guide</h2>
+                <div class="location-input">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" placeholder="Enter location name">
+                </div>
+                <div class="power-source-selection">
+                    <h3>Start: Choose Power Source</h3>
+                    <button onclick="showPage('existing-power-page')">Use Existing Power</button>
+                    <button onclick="showPage('generator-power-page')">Use Generator</button>
+                </div>
+                <button onclick="showPage('main-task-page')">Main Task</button>
+            </section>
+        </main>
+
+        <!-- Main Task Page (Image 10: Rack Build Tasks) -->
+        <div id="main-task-page" class="task-page" style="display: none;">
+            <h2>Rack Build Tasks</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="mt1" onchange="updateProgress('main-task-page')">
+                    <label for="mt1">Rack shall be cemented into ground using (2) 2”x10” rigid conduit for poles</label>
+                    <button class="na-btn" onclick="toggleNA('mt1', 'main-task-page')">N/A</button>
+                </li>
+                <li>
+                    <input type="checkbox" id="mt2" onchange="updateProgress('main-task-page')">
+                    <label for="mt2">Poles spaced 4’6” apart – Let cement dry before moving to next step</label>
+                    <button class="na-btn" onclick="toggleNA('mt2', 'main-task-page')">N/A</button>
+                </li>
+            </ul>
+            <button class="back-btn" onclick="goBack()">Back to Main Page</button>
+        </div>
+
+        <!-- Existing Power Task Page (Image 1) -->
+        <div id="existing-power-page" class="task-page" style="display: none;">
+            <h2>Existing Power Tasks</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="ep1" onchange="updateProgress('existing-power-page')">
+                    <label for="ep1">Confirm existing power source</label>
+                    <button class="na-btn" onclick="toggleNA('ep1', 'existing-power-page')">N/A</button>
+                </li>
+                <li>
+                    <input type="checkbox" id="ep2" onchange="updateProgress('existing-power-page')">
+                    <label for="ep2">Look for panel skid or existing rack</label>
+                    <button class="na-btn" onclick="toggleNA('ep2', 'existing-power-page')">N/A</button>
+                </li>
+            </ul>
+            <button class="back-btn" onclick="goBack()">Back to Main Page</button>
+        </div>
+
+        <!-- Generator Power Task Page (Image 9) -->
+        <div id="generator-power-page" class="task-page" style="display: none;">
+            <h2>Generator Power Tasks</h2>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="gp1" onchange="updateProgress('generator-power-page')">
+                    <label for="gp1">Confirm generator location</label>
+                    <button class="na-btn" onclick="toggleNA('gp1', 'generator-power-page')">N/A</button>
+                </li>
+                <li>
+                    <input type="checkbox" id="gp2" onchange="updateProgress('generator-power-page')">
+                    <label for="gp2">Set rack panel rack 3' in front of existing pipe rack</label>
+                    <button class="na-btn" onclick="toggleNA('gp2', 'generator-power-page')">N/A</button>
+                </li>
+            </ul>
+            <button class="back-btn" onclick="goBack()">Back to Main Page</button>
+        </div>
+
+        <!-- Footer with Save/Reset (Image 0: Save and Reload Feature) -->
+        <footer>
+            <button onclick="saveProgress()">Save</button>
+            <button onclick="resetJob()">Reset for New Job</button>
+            <button>Help</button>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
